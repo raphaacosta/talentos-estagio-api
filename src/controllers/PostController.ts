@@ -20,9 +20,23 @@ class PostController {
   }
 
   list(request: Request, response: Response) {
-    if (posts.lenght <= 0) return response.status(200).json("You don't have any posts.");
+    if (posts.length <= 0) return response.status(200).json("You don't have any posts.");
 
     return response.status(200).json(posts);
+  }
+
+  update(request: Request, response: Response) {
+    const { name, description, category } = request.body;
+    const { postId } = request.params;
+    const foundPost = posts.findIndex((obj => obj.id === Number(postId)))
+
+    if (foundPost <= -1) return response.status(400).json("Your post couldn't be find.")
+
+    posts[foundPost].name = name;
+    posts[foundPost].description = description;
+    posts[foundPost].category = category;
+
+    return response.status(200).json(posts[foundPost]);
   }
 }
 

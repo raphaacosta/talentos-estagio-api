@@ -1,5 +1,5 @@
 // import IPostsArray from './interfaces/Post';
 
-let posts: any = [];
+let posts: any[] = [];
 
 export default posts;
