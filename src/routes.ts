@@ -9,5 +9,6 @@ const postController = new PostController;
 routes.post('/posts', postController.create);
 routes.get('/posts', postController.list);
 routes.put('/posts/:postId', postController.update);
+routes.delete('/posts/:id', postController.delete);
 
 export default routes;

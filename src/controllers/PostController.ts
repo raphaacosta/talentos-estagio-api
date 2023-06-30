@@ -38,6 +38,15 @@ class PostController {
 
     return response.status(200).json(posts[foundPost]);
   }
+
+  delete(request: Request, response: Response) {
+    const { postId } = request.params;
+    const foundPost = posts.findIndex((obj => obj.id === Number(postId)))
+
+    posts.splice(foundPost, 1);
+
+    return response.status(200).json(posts);
+  }
 }
 
 export default PostController;
